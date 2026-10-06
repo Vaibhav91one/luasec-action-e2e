@@ -1,0 +1,21 @@
+name: luasec
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  security-events: write # SARIF upload to code scanning
+
+jobs:
+  luasec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Vaibhav91one/luasec@v0.5.0
+        with:
+          path: src
+          std: "+luci"
+          fail-on: high
+          args: "--baseline baseline.json"

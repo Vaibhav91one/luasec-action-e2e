@@ -1,0 +1,46 @@
+{
+  "findings": [
+    {
+      "code": "709",
+      "column": 4,
+      "confidence": "certain",
+      "cwe": "CWE-78",
+      "end_column": 52,
+      "file": "src/legacy.lua",
+      "line": 2,
+      "message": "untrusted data reaches command execution (os.execute)",
+      "name": "os.execute",
+      "severity": "critical",
+      "sink": "os.execute",
+      "source": "http.formvalue",
+      "trace": [
+        {
+          "file": "src/legacy.lua",
+          "kind": "source",
+          "line": 2,
+          "name": "http.formvalue"
+        },
+        {
+          "file": "src/legacy.lua",
+          "kind": "sink",
+          "line": 2,
+          "name": "os.execute"
+        }
+      ]
+    }
+  ],
+  "luasecVersion": "0.5.0",
+  "reportVersion": "1.0",
+  "score": {
+    "categories": {
+      "artifact": 0,
+      "exec": 1,
+      "firmware": 0,
+      "meta": 0,
+      "payload": 0
+    },
+    "coverage_gaps": 0,
+    "label": "needs work",
+    "value": 75
+  }
+}
